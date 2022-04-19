@@ -37,7 +37,7 @@ contract UniswapV2Test is DSTest {
             vm.store(
                 wethAddress,
                 keccak256(abi.encode(address(uniswap), uint256(3))),
-                bytes32(uint256(premium))
+                bytes32(premium)
             );
 
             uniswap.go(1 ether);

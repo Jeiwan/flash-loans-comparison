@@ -33,14 +33,16 @@ contract AAVETest is DSTest {
         uint256[] memory modes = new uint256[](1);
         modes[0] = 0; // no interest rate
 
-        // Premium 0.9%
-        vm.store(
-            wethAddress,
-            keccak256(abi.encode(address(aave), uint256(3))),
-            bytes32(uint256(0.009 ether))
-        );
+        // Premium 0.09%
+        uint256 premium = (1 ether * 9) / uint256(10000);
 
         for (uint256 i; i < 10; i++) {
+            vm.store(
+                wethAddress,
+                keccak256(abi.encode(address(aave), uint256(3))),
+                bytes32(premium)
+            );
+
             aave.go(assets, amounts, modes);
         }
     }
