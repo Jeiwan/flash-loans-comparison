@@ -57,7 +57,7 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ╰──────────────────────────┴─────────────────┴────────┴────────┴────────┴─────────╯
 ```
 
-#### UniswapV2 (0.03%, swap fee)
+#### UniswapV2 (0.3%, swap fee)
 ```
 ╭────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ UniswapV2 contract ┆                 ┆       ┆        ┆       ┆         │
@@ -74,7 +74,7 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ╰────────────────────┴─────────────────┴───────┴────────┴───────┴─────────╯
 ```
 
-#### UniswapV3 (0.03%, swap fee)
+#### UniswapV3 (0.3%, swap fee)
 ```
 ╭────────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ UniswapV3 contract     ┆                 ┆       ┆        ┆       ┆         │

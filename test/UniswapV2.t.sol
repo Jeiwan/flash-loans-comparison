@@ -30,8 +30,8 @@ contract UniswapV2Test is DSTest {
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 1 ether;
 
-        // Premium 0.003% + 1
-        uint256 premium = ((1 ether * 1000) / uint256(997)) - 1 ether + 1;
+        // Premium 0.3009027%
+        uint256 premium = (1 ether * 1000) / uint256(997) + 1 - 1 ether;
 
         for (uint256 i; i < 10; i++) {
             vm.store(

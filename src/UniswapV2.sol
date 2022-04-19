@@ -42,6 +42,6 @@ contract UniswapV2 {
         if (msg.sender != pairAddress) revert();
         if (sender != address(this)) revert();
 
-        weth.transfer(msg.sender, (amount1 * 1000) / 997 + 1);
+        weth.transfer(msg.sender, (amount1 * 1000) / uint256(997) + 1);
     }
 }
