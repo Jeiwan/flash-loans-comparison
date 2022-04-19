@@ -95,6 +95,6 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 
 - [x] AAVE
 - [x] Balancer
-- [ ] Euler
+- [x] Euler
 - [x] UniswapV2
 - [x] UniswapV3
