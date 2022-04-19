@@ -24,23 +24,18 @@ contract UniswapV2Test is DSTest {
     }
 
     function testFlashLoan() public {
-        address[] memory assets = new address[](1);
-        assets[0] = wethAddress;
-
-        uint256[] memory amounts = new uint256[](1);
-        amounts[0] = 1 ether;
-
+        uint256 amount = 1 ether;
         // Premium 0.3009027%
-        uint256 premium = (1 ether * 1000) / uint256(997) + 1 - 1 ether;
+        uint256 premium = (amount * 1000) / uint256(997) + 1 - amount;
+
+        vm.store(
+            wethAddress,
+            keccak256(abi.encode(address(uniswap), uint256(3))),
+            bytes32(premium * 10)
+        );
 
         for (uint256 i; i < 10; i++) {
-            vm.store(
-                wethAddress,
-                keccak256(abi.encode(address(uniswap), uint256(3))),
-                bytes32(premium)
-            );
-
-            uniswap.go(1 ether);
+            uniswap.go(amount);
         }
     }
 }

@@ -14,12 +14,6 @@ contract EulerTest is DSTest {
     }
 
     function testFlashLoan() public {
-        address[] memory assets = new address[](1);
-        assets[0] = wethAddress;
-
-        uint256[] memory amounts = new uint256[](1);
-        amounts[0] = 1 ether;
-
         for (uint256 i; i < 10; i++) {
             euler.go(1 ether);
         }

@@ -36,13 +36,13 @@ contract AAVETest is DSTest {
         // Premium 0.09%
         uint256 premium = (1 ether * 9) / uint256(10000);
 
-        for (uint256 i; i < 10; i++) {
-            vm.store(
-                wethAddress,
-                keccak256(abi.encode(address(aave), uint256(3))),
-                bytes32(premium)
-            );
+        vm.store(
+            wethAddress,
+            keccak256(abi.encode(address(aave), uint256(3))),
+            bytes32(premium * 10)
+        );
 
+        for (uint256 i; i < 10; i++) {
             aave.go(assets, amounts, modes);
         }
     }
