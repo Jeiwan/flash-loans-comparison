@@ -36,14 +36,11 @@ contract UniswapV3 {
     function uniswapV3FlashCallback(
         uint256 fee0,
         uint256 fee1,
-        bytes memory data
+        bytes calldata data
     ) public {
         if (msg.sender != pairAddress) revert();
 
-        uint256 amount;
-        assembly {
-            amount := mload(add(data, 0x20))
-        }
+        uint256 amount = abi.decode(data, (uint256));
 
         weth.transfer(msg.sender, amount + fee1);
     }

@@ -36,18 +36,13 @@ contract Euler {
         exec.deferLiquidityCheck(address(this), abi.encodePacked(amount));
     }
 
-    function onDeferredLiquidityCheck(bytes memory encodedData) public {
+    function onDeferredLiquidityCheck(bytes calldata encodedData) public {
         if (msg.sender != eulerAddress) revert();
 
-        uint256 amount;
-        assembly {
-            amount := mload(add(encodedData, 0x20))
-        }
-
+        uint256 amount = abi.decode(encodedData, (uint256));
         dToken.borrow(0, amount);
 
         weth.approve(eulerAddress, amount);
-
         dToken.repay(0, amount);
     }
 }
