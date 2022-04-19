@@ -6,7 +6,7 @@ Obtained via:
 $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ```
 
-#### AAVE
+#### AAVE (fee 0.09% on WETH)
 ```
 ╭──────────────────┬─────────────────┬───────┬────────┬────────┬─────────╮
 │ AAVE contract    ┆                 ┆       ┆        ┆        ┆         │
@@ -23,7 +23,7 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ╰──────────────────┴─────────────────┴───────┴────────┴────────┴─────────╯
 ```
 
-#### Balancer
+#### Balancer (free)
 ```
 ╭───────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ Balancer contract ┆                 ┆       ┆        ┆       ┆         │
@@ -40,7 +40,7 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ╰───────────────────┴─────────────────┴───────┴────────┴───────┴─────────╯
 ```
 
-#### UniswapV2
+#### UniswapV2 (0.03%, swap fee)
 ```
 ╭────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ UniswapV2 contract ┆                 ┆       ┆        ┆       ┆         │
@@ -57,7 +57,7 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ╰────────────────────┴─────────────────┴───────┴────────┴───────┴─────────╯
 ```
 
-#### UniswapV3
+#### UniswapV3 (0.03%, swap fee)
 ```
 ╭────────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ UniswapV3 contract     ┆                 ┆       ┆        ┆       ┆         │
