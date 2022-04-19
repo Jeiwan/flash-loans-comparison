@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "ds-test/test.sol";
 import "../src/Balancer.sol";
 
-contract ContractTest is DSTest {
+contract BalancerTest is DSTest {
     Balancer balancer;
 
     address constant wethAddress = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;

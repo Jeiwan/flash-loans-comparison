@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "ds-test/test.sol";
-import "../src/AAVE.sol";
+import "../src/UniswapV2.sol";
 
 interface Vm {
     function store(
@@ -12,15 +12,15 @@ interface Vm {
     ) external;
 }
 
-contract AAVETest is DSTest {
+contract UniswapV2Test is DSTest {
     Vm vm = Vm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
-    AAVE aave;
+    UniswapV2 uniswap;
 
     address constant wethAddress = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     function setUp() public {
-        aave = new AAVE();
+        uniswap = new UniswapV2();
     }
 
     function testFlashLoan() public {
@@ -30,18 +30,17 @@ contract AAVETest is DSTest {
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 1 ether;
 
-        uint256[] memory modes = new uint256[](1);
-        modes[0] = 0; // no interest rate
-
-        // Premium 0.9%
-        vm.store(
-            wethAddress,
-            keccak256(abi.encode(address(aave), uint256(3))),
-            bytes32(uint256(0.009 ether))
-        );
+        // Premium 0.003% + 1
+        uint256 premium = ((1 ether * 1000) / uint256(997)) - 1 ether + 1;
 
         for (uint256 i; i < 10; i++) {
-            aave.go(assets, amounts, modes);
+            vm.store(
+                wethAddress,
+                keccak256(abi.encode(address(uniswap), uint256(3))),
+                bytes32(uint256(premium))
+            );
+
+            uniswap.go(1 ether);
         }
     }
 }
