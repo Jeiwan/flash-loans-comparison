@@ -1,4 +1,4 @@
-## Comparison of flash loan service on Ethereum
+## Comparison of flash loan solutions on Ethereum
 
 ### Results
 Obtained via:
