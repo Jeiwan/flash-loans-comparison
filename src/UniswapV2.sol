@@ -26,7 +26,7 @@ contract UniswapV2 {
         owner = msg.sender;
     }
 
-    function go(uint256 amount) public {
+    function flashLoan(uint256 amount) public {
         if (msg.sender != owner) revert();
 
         // WETH is token1

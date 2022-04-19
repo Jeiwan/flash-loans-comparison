@@ -28,7 +28,7 @@ contract AAVE {
         owner = msg.sender;
     }
 
-    function go(
+    function flashLoan(
         address[] calldata assets,
         uint256[] calldata amounts,
         uint256[] calldata modes

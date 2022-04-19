@@ -24,7 +24,7 @@ contract Balancer {
         owner = msg.sender;
     }
 
-    function go(address[] calldata tokens, uint256[] calldata amounts) public {
+    function flashLoan(address[] calldata tokens, uint256[] calldata amounts) public {
         if (msg.sender != owner) revert();
 
         balancer.flashLoan(address(this), tokens, amounts, "");

@@ -55,7 +55,7 @@ contract FlashLoansTest is DSTest {
         );
 
         for (uint256 i; i < 10; i++) {
-            aave.go(assets, amounts, modes);
+            aave.flashLoan(assets, amounts, modes);
         }
     }
 
@@ -67,13 +67,13 @@ contract FlashLoansTest is DSTest {
         amounts[0] = 1 ether;
 
         for (uint256 i; i < 10; i++) {
-            balancer.go(assets, amounts);
+            balancer.flashLoan(assets, amounts);
         }
     }
 
     function testEulerFinance() public {
         for (uint256 i; i < 10; i++) {
-            euler.go(1 ether);
+            euler.flashLoan(1 ether);
         }
     }
 
@@ -89,7 +89,7 @@ contract FlashLoansTest is DSTest {
         );
 
         for (uint256 i; i < 10; i++) {
-            uniswapv2.go(amount);
+            uniswapv2.flashLoan(amount);
         }
     }
 
@@ -105,7 +105,7 @@ contract FlashLoansTest is DSTest {
         );
 
         for (uint256 i; i < 10; i++) {
-            uniswapv3.go(amount);
+            uniswapv3.flashLoan(amount);
         }
     }
 }
