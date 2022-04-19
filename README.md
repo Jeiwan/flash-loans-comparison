@@ -41,7 +41,8 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimize-runs 10
 ```
 
 ### TODO
-[x] AAVE
-[] Balancer
-[] Euler
-[] Uniswap
+
+- [x] AAVE
+- [x] Balancer
+- [] Euler
+- [] Uniswap
