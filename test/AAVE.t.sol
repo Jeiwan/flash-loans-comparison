@@ -5,7 +5,11 @@ import "ds-test/test.sol";
 import "../src/AAVE.sol";
 
 interface Vm {
-    function store(address,bytes32,bytes32) external;
+    function store(
+        address,
+        bytes32,
+        bytes32
+    ) external;
 }
 
 contract ContractTest is DSTest {
@@ -30,8 +34,14 @@ contract ContractTest is DSTest {
         modes[0] = 0; // no interest rate
 
         // Premium 0.9%
-        vm.store(wethAddress, keccak256(abi.encode(address(aave), uint256(3))), bytes32(uint256(0.009 ether)));
+        vm.store(
+            wethAddress,
+            keccak256(abi.encode(address(aave), uint256(3))),
+            bytes32(uint256(0.009 ether))
+        );
 
-        aave.go(assets, amounts, modes);
+        for (uint256 i; i < 10; i++) {
+            aave.go(assets, amounts, modes);
+        }
     }
 }
