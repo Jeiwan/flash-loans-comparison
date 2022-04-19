@@ -38,6 +38,6 @@ contract Balancer {
     ) public payable {
         if (msg.sender != balancerAddress) revert();
 
-        IERC20(tokens[0]).transfer(balancerAddress, amounts[0]);
+        tokens[0].transfer(balancerAddress, amounts[0]);
     }
 }
