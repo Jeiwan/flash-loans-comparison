@@ -33,6 +33,12 @@ contract FlashLoansTest is DSTest {
         euler = new Euler();
         uniswapv2 = new UniswapV2();
         uniswapv3 = new UniswapV3();
+
+        giveWeth(address(aave));
+        giveWeth(address(balancer));
+        giveWeth(address(euler));
+        giveWeth(address(uniswapv2));
+        giveWeth(address(uniswapv3));
     }
 
     function testAAVE() public {
@@ -44,15 +50,6 @@ contract FlashLoansTest is DSTest {
 
         uint256[] memory modes = new uint256[](1);
         modes[0] = 0; // no interest rate
-
-        // Premium 0.09%
-        uint256 premium = (1 ether * 9) / uint256(10000);
-
-        vm.store(
-            wethAddress,
-            keccak256(abi.encode(address(aave), uint256(3))),
-            bytes32(premium * 10)
-        );
 
         for (uint256 i; i < 10; i++) {
             aave.flashLoan(assets, amounts, modes);
@@ -79,14 +76,6 @@ contract FlashLoansTest is DSTest {
 
     function testUniswapV2() public {
         uint256 amount = 1 ether;
-        // Premium 0.3009027%
-        uint256 premium = (amount * 1000) / uint256(997) + 1 - amount;
-
-        vm.store(
-            wethAddress,
-            keccak256(abi.encode(address(uniswapv2), uint256(3))),
-            bytes32(premium * 10)
-        );
 
         for (uint256 i; i < 10; i++) {
             uniswapv2.flashLoan(amount);
@@ -95,17 +84,17 @@ contract FlashLoansTest is DSTest {
 
     function testUniswapV3() public {
         uint256 amount = 1 ether;
-        // Premium 0.3009027%
-        uint256 premium = (amount * 1000) / uint256(997) + 1 - amount;
-
-        vm.store(
-            wethAddress,
-            keccak256(abi.encode(address(uniswapv3), uint256(3))),
-            bytes32(premium * 10)
-        );
 
         for (uint256 i; i < 10; i++) {
             uniswapv3.flashLoan(amount);
         }
+    }
+
+    function giveWeth(address addr) internal {
+        vm.store(
+            wethAddress,
+            keccak256(abi.encode(addr, uint256(3))),
+            bytes32(uint256(10 ether))
+        );
     }
 }
