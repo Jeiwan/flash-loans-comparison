@@ -51,7 +51,7 @@ contract AAVE {
         uint256[] calldata amounts,
         uint256[] calldata premiums,
         address initiator,
-        bytes calldata params
+        bytes calldata /* params */
     ) external returns (bool) {
         if (msg.sender != lendingPoolAddress) revert();
         if (initiator != address(this)) revert();

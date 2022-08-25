@@ -35,8 +35,8 @@ contract Balancer {
     function receiveFlashLoan(
         IERC20[] calldata tokens,
         uint256[] calldata amounts,
-        uint256[] calldata feeAmounts,
-        bytes calldata userData
+        uint256[] calldata, /* feeAmounts */
+        bytes calldata /* userData */
     ) public payable {
         if (msg.sender != balancerAddress) revert();
 

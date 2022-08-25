@@ -34,7 +34,7 @@ contract UniswapV3 {
     }
 
     function uniswapV3FlashCallback(
-        uint256 fee0,
+        uint256, /* fee0 */
         uint256 fee1,
         bytes calldata data
     ) public {

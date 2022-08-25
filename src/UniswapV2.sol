@@ -35,9 +35,9 @@ contract UniswapV2 {
 
     function uniswapV2Call(
         address sender,
-        uint256 amount0,
+        uint256, /* amount0 */
         uint256 amount1,
-        bytes calldata data
+        bytes calldata /* data */
     ) public {
         if (msg.sender != pairAddress) revert();
         if (sender != address(this)) revert();
