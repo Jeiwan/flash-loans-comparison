@@ -1,24 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.16;
 
-import "ds-test/test.sol";
+import "forge-std/Test.sol";
 import "../src/AAVE.sol";
 import "../src/Balancer.sol";
 import "../src/Euler.sol";
 import "../src/UniswapV2.sol";
 import "../src/UniswapV3.sol";
 
-interface Vm {
-    function store(
-        address,
-        bytes32,
-        bytes32
-    ) external;
-}
-
-contract FlashLoansTest is DSTest {
-    Vm vm = Vm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-
+contract FlashLoansTest is Test {
     AAVE aave;
     Balancer balancer;
     Euler euler;
