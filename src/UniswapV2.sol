@@ -22,7 +22,7 @@ contract UniswapV2 {
 
     function flashLoan(uint256 amount) public {
         // WETH is token1
-        pair.swap(0, amount, address(this), "0x00");
+        pair.swap(0, amount, address(this), hex"00");
     }
 
     function uniswapV2Call(
