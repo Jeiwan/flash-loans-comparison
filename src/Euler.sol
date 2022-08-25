@@ -8,8 +8,6 @@ interface IEulerDToken {
 }
 
 contract Euler {
-    address immutable owner;
-
     address constant eulerAddress = 0x27182842E098f60e3D576794A5bFFb0777E025d3;
     address constant wethAddress = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
@@ -18,13 +16,7 @@ contract Euler {
 
     IEulerDToken constant dToken = IEulerDToken(dTokenAddress);
 
-    constructor() {
-        owner = msg.sender;
-    }
-
     function flashLoan(uint256 amount) public {
-        if (msg.sender != owner) revert();
-
         dToken.flashLoan(amount, abi.encode(wethAddress, amount));
     }
 

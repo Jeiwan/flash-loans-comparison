@@ -13,8 +13,6 @@ interface IUniswapPair {
 }
 
 contract UniswapV2 {
-    address immutable owner;
-
     // WETH-USDC
     address constant pairAddress = 0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc;
     address constant wethAddress = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -22,13 +20,7 @@ contract UniswapV2 {
     IUniswapPair constant pair = IUniswapPair(pairAddress);
     IERC20 constant weth = IERC20(wethAddress);
 
-    constructor() {
-        owner = msg.sender;
-    }
-
     function flashLoan(uint256 amount) public {
-        if (msg.sender != owner) revert();
-
         // WETH is token1
         pair.swap(0, amount, address(this), "0x00");
     }

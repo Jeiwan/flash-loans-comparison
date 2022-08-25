@@ -13,22 +13,14 @@ interface IBalancer {
 }
 
 contract Balancer {
-    address immutable owner;
-
     address constant balancerAddress =
         0xBA12222222228d8Ba445958a75a0704d566BF2C8;
 
     IBalancer constant balancer = IBalancer(balancerAddress);
 
-    constructor() {
-        owner = msg.sender;
-    }
-
     function flashLoan(address[] calldata tokens, uint256[] calldata amounts)
         public
     {
-        if (msg.sender != owner) revert();
-
         balancer.flashLoan(address(this), tokens, amounts, "");
     }
 

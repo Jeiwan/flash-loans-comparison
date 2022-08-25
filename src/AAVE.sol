@@ -16,25 +16,17 @@ interface IAAVELendingPool {
 }
 
 contract AAVE {
-    address immutable owner;
-
     address constant lendingPoolAddress =
         0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9;
 
     IAAVELendingPool constant lendingPool =
         IAAVELendingPool(lendingPoolAddress);
 
-    constructor() {
-        owner = msg.sender;
-    }
-
     function flashLoan(
         address[] calldata assets,
         uint256[] calldata amounts,
         uint256[] calldata modes
     ) public {
-        if (msg.sender != owner) revert();
-
         lendingPool.flashLoan(
             address(this),
             assets,
