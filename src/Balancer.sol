@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.16;
 
 import {IERC20} from "./interfaces.sol";
 
@@ -24,7 +24,9 @@ contract Balancer {
         owner = msg.sender;
     }
 
-    function flashLoan(address[] calldata tokens, uint256[] calldata amounts) public {
+    function flashLoan(address[] calldata tokens, uint256[] calldata amounts)
+        public
+    {
         if (msg.sender != owner) revert();
 
         balancer.flashLoan(address(this), tokens, amounts, "");
