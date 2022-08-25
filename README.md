@@ -90,11 +90,3 @@ $ forge test --fork-url $NODE_URL --gas-report --optimize --optimizer-runs 10
 │ uniswapV3FlashCallback ┆ 4348            ┆ 4348  ┆ 4348   ┆ 4348  ┆ 10      │
 ╰────────────────────────┴─────────────────┴───────┴────────┴───────┴─────────╯
 ```
-
-### TODO
-
-- [x] AAVE
-- [x] Balancer
-- [x] Euler
-- [x] UniswapV2
-- [x] UniswapV3
