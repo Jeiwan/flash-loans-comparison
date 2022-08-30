@@ -74,7 +74,7 @@ $ forge test --fork-url $ETH_RPC_URL --gas-report --optimize --optimizer-runs 10
 ╰──────────────────────────────────────┴─────────────────┴───────┴────────┴───────┴─────────╯
 ```
 
-#### UniswapV3 (0.3009027% fee)
+#### UniswapV3 (0.05%, 0.3%, 1% fee, depending on pool)
 ```
 ╭──────────────────────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ src/UniswapV3.sol:UniswapV3 contract ┆                 ┆       ┆        ┆       ┆         │
